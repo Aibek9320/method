@@ -51,9 +51,71 @@ console.log(task9.reduce((acc, rec, idx, arr) => {
     return acc + rec
 } ));
 
-const task10 = [true,true,true,true ]
+const task10 = (boo) => {
+    return boo.reduce((acc, rec, idx) => {
+        return acc && rec
+    })
+}
 
-console.log(task10.reduce((acc, rec, idx, arr)=> {
-    return
-}))
+console.log(task10([true,true,true,true ]))
+
+const task11 = (field) => {
+    return field.reduce((acc, rec, idx) => {
+        return {...acc, ['field' + (idx + 1)] :rec}
+    } )
+}
+console.log(task11([true,1,'wow','you are smart, bro']))
+
+const task12 = (obj) => {
+return Object.entries(obj).reduce((acc, rec) => {
+    if(typeof rec[1] === 'string'){
+        return {...acc, [rec [0]]: rec[1]}
+    } else {
+        return acc
+    }
+}, {})
+}
+console.log (task12({ name: 'pilot', isactive: true }));
+
+// Напишите функцию, которая принимает объект, как аргумент и возвращает новый массив с именами ключей - значение, которых false
+// Input: { isActive: false, isPilot: true }
+// Actions:
+// Output: ['isActive']
+
+
+const task13 = (ob) => {
+    return Object.entries(ob).reduce((acc, rec) => {
+        if (!ob[rec]){
+            return [...acc, rec]
+        }
+        else{
+            return acc
+        }
+}, [])
+}
+console.log(task13({ isActive: false, isPilot: true }))
+
+// Вам задан массив - верните среднее число массива. (сумма всех элементов деленное на количество элементов)
+// Input: [4, 6]
+// Actions:
+// Output: 5
+// Input: [2, 4]
+// Actions:
+// Output: 3
+
+// const task14 = (avg) => {
+//     return avg.reduce((acc, rec) => {
+//         return acc+rec
+//     })/avg.length
+// }
+// console.log(task14([4, 2]))
+
+const task15 = (arrr, initialVal) => {
+    return arrr.reduce((acc, rec) => {
+        return rec(acc)
+    }, initialVal)
+}
+
+console.log(task15([(a) => a+ 1,(a) => a * 2],5));
+
 
